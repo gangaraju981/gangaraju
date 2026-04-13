@@ -1,0 +1,1034 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gangaraju R — Aerospace Engineer | IIT Madras</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,200;0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,700;1,9..144,200;1,9..144,300;1,9..144,400&family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300&family=JetBrains+Mono:wght@300;400&display=swap" rel="stylesheet">
+<style>
+/* ── RESET ── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; font-size: 16px; }
+img { display: block; width: 100%; height: 100%; object-fit: cover; }
+a { color: inherit; text-decoration: none; }
+ul { list-style: none; }
+
+/* ── THEME TOKENS ── */
+[data-theme="light"] {
+  --bg:        #f8f6f1;
+  --bg-2:      #f0ede6;
+  --bg-card:   #ffffff;
+  --ink:       #0c1420;
+  --ink-2:     #2d3d52;
+  --ink-3:     #6b7e95;
+  --ink-4:     #a8b8c8;
+  --navy:      #0f2a56;
+  --navy-mid:  #1a418a;
+  --navy-lt:   #e4ecf8;
+  --gold:      #b8871e;
+  --gold-lt:   #fdf3e0;
+  --green:     #1a6b45;
+  --green-lt:  #e3f5ec;
+  --border:    rgba(12,20,32,0.09);
+  --border-2:  rgba(12,20,32,0.05);
+  --shadow:    0 1px 3px rgba(12,20,32,0.06), 0 4px 16px rgba(12,20,32,0.04);
+  --shadow-lg: 0 8px 32px rgba(12,20,32,0.1);
+}
+[data-theme="dark"] {
+  --bg:        #0c1016;
+  --bg-2:      #101820;
+  --bg-card:   #141e2a;
+  --ink:       #e8eef5;
+  --ink-2:     #b0c0d4;
+  --ink-3:     #6a7f95;
+  --ink-4:     #3a4e62;
+  --navy:      #5a8fd4;
+  --navy-mid:  #7aacf0;
+  --navy-lt:   #0f1f35;
+  --gold:      #d4a030;
+  --gold-lt:   #1e1505;
+  --green:     #34c87a;
+  --green-lt:  #0a1f14;
+  --border:    rgba(255,255,255,0.07);
+  --border-2:  rgba(255,255,255,0.04);
+  --shadow:    0 1px 3px rgba(0,0,0,0.3), 0 4px 16px rgba(0,0,0,0.2);
+  --shadow-lg: 0 8px 32px rgba(0,0,0,0.4);
+}
+
+/* ── BASE ── */
+body {
+  font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+  background: var(--bg);
+  color: var(--ink);
+  line-height: 1.65;
+  transition: background .35s, color .35s;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ── SCROLL ANIMATION ── */
+.reveal { opacity: 0; transform: translateY(28px); transition: opacity .65s ease, transform .65s ease; }
+.reveal.visible { opacity: 1; transform: none; }
+.reveal-delay-1 { transition-delay: .1s; }
+.reveal-delay-2 { transition-delay: .2s; }
+.reveal-delay-3 { transition-delay: .3s; }
+
+/* ── TOPBAR ── */
+.topbar {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 500;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 48px; height: 60px;
+  background: rgba(var(--bg-rgb, 248,246,241), .92);
+  backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border);
+  transition: background .35s, border-color .35s;
+}
+[data-theme="dark"] .topbar { background: rgba(12,16,22,.92); }
+
+.topbar-logo {
+  font-family: 'Fraunces', Georgia, serif;
+  font-weight: 500; font-size: 18px; letter-spacing: .3px;
+  color: var(--navy);
+}
+.topbar-logo span { font-style: italic; font-weight: 300; opacity: .6; }
+
+.topbar-links { display: flex; gap: 32px; align-items: center; }
+.topbar-links a {
+  font-size: 12px; font-weight: 500; letter-spacing: .08em; text-transform: uppercase;
+  color: var(--ink-3); transition: color .2s;
+}
+.topbar-links a:hover, .topbar-links a.active { color: var(--navy); }
+
+.topbar-right { display: flex; align-items: center; gap: 16px; }
+
+.theme-toggle {
+  background: none; border: 1px solid var(--border); cursor: pointer;
+  width: 36px; height: 36px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  color: var(--ink-3); transition: all .2s; font-size: 15px;
+}
+.theme-toggle:hover { border-color: var(--navy); color: var(--navy); }
+
+.topbar-cta {
+  background: var(--navy); color: #fff;
+  font-size: 12px; font-weight: 600; letter-spacing: .07em; text-transform: uppercase;
+  padding: 9px 20px; border-radius: 3px; transition: opacity .2s;
+}
+.topbar-cta:hover { opacity: .85; }
+
+/* ── HERO ── */
+.hero {
+  min-height: 100vh; margin-top: 60px;
+  display: grid; grid-template-columns: 55% 45%;
+}
+.hero-l {
+  background: var(--navy); padding: 80px 64px;
+  display: flex; flex-direction: column; justify-content: center;
+  position: relative; overflow: hidden;
+}
+.hero-l::before {
+  content: '';
+  position: absolute; top: -120px; right: -80px;
+  width: 500px; height: 500px;
+  border-radius: 50%;
+  border: 1px solid rgba(255,255,255,.04);
+}
+.hero-l::after {
+  content: '';
+  position: absolute; bottom: -80px; left: -80px;
+  width: 300px; height: 300px;
+  border-radius: 50%;
+  border: 1px solid rgba(255,255,255,.03);
+}
+
+.hero-badge {
+  display: inline-flex; align-items: center; gap: 10px;
+  background: rgba(255,255,255,.07); border: 1px solid rgba(255,255,255,.12);
+  padding: 7px 16px; border-radius: 100px; margin-bottom: 40px; width: fit-content;
+}
+.hero-badge-dot { width: 6px; height: 6px; border-radius: 50%; background: #4de88a; animation: pulse 2s infinite; }
+@keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:.6;transform:scale(1.3)} }
+.hero-badge span { font-size: 12px; color: rgba(255,255,255,.7); letter-spacing: .06em; }
+
+.hero-h1 {
+  font-family: 'Fraunces', Georgia, serif;
+  font-weight: 300; font-size: clamp(56px, 6vw, 88px);
+  line-height: .98; color: #fff; margin-bottom: 8px;
+  letter-spacing: -.5px;
+}
+.hero-h1 em { font-style: italic; color: rgba(255,255,255,.45); }
+
+.hero-subtitle {
+  font-size: 14px; font-weight: 400; letter-spacing: .1em; text-transform: uppercase;
+  color: rgba(255,255,255,.4); margin-bottom: 40px;
+}
+.hero-subtitle span { color: var(--gold); }
+
+.hero-bio {
+  font-family: 'Fraunces', serif; font-size: 19px; font-weight: 300;
+  line-height: 1.8; color: rgba(255,255,255,.72); max-width: 480px; margin-bottom: 52px;
+  font-style: italic;
+}
+
+.hero-kpis { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; margin-bottom: 48px; }
+.hero-kpi {
+  padding: 20px 0; border-top: 1px solid rgba(255,255,255,.1);
+}
+.hero-kpi-n {
+  font-family: 'Fraunces', serif; font-size: 34px; font-weight: 300; color: #fff;
+  line-height: 1; margin-bottom: 5px;
+}
+.hero-kpi-l { font-size: 11px; color: rgba(255,255,255,.38); letter-spacing: .1em; text-transform: uppercase; }
+
+.hero-actions { display: flex; gap: 12px; flex-wrap: wrap; }
+.btn-primary {
+  background: #fff; color: var(--navy);
+  font-size: 13px; font-weight: 600; letter-spacing: .06em; text-transform: uppercase;
+  padding: 13px 28px; border-radius: 3px; transition: opacity .2s;
+}
+.btn-primary:hover { opacity: .88; }
+.btn-ghost {
+  background: transparent; color: rgba(255,255,255,.7);
+  border: 1px solid rgba(255,255,255,.2);
+  font-size: 13px; font-weight: 500; letter-spacing: .06em; text-transform: uppercase;
+  padding: 12px 24px; border-radius: 3px; transition: all .2s;
+}
+.btn-ghost:hover { border-color: rgba(255,255,255,.5); color: #fff; }
+
+/* hero right */
+.hero-r {
+  background: var(--bg-2); padding: 80px 56px;
+  display: flex; flex-direction: column; justify-content: center; gap: 16px;
+}
+.hero-r-label {
+  font-size: 10px; font-weight: 600; letter-spacing: .2em; text-transform: uppercase;
+  color: var(--ink-4); margin-bottom: 4px; display: block;
+}
+.expertise-cards { display: flex; flex-direction: column; gap: 2px; }
+.exp-card-mini {
+  background: var(--bg-card); border: 1px solid var(--border);
+  padding: 22px 24px; display: flex; gap: 18px; align-items: flex-start;
+  transition: box-shadow .25s, transform .25s;
+}
+.exp-card-mini:hover { box-shadow: var(--shadow); transform: translateX(4px); }
+.ecm-icon {
+  width: 36px; height: 36px; border-radius: 8px;
+  background: var(--navy-lt); display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+}
+.ecm-icon svg { width: 16px; height: 16px; stroke: var(--navy); fill: none; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
+.ecm-title { font-size: 13px; font-weight: 600; color: var(--ink); margin-bottom: 4px; }
+.ecm-body { font-size: 12px; color: var(--ink-3); line-height: 1.55; }
+
+.contact-strip {
+  background: var(--bg-card); border: 1px solid var(--border);
+  padding: 18px 24px; margin-top: 4px;
+}
+.contact-strip p { font-size: 12px; color: var(--ink-3); margin-bottom: 10px; }
+.contact-links-mini { display: flex; flex-direction: column; gap: 6px; }
+.cli {
+  display: flex; align-items: center; gap: 10px;
+  font-size: 13px; color: var(--ink-2); transition: color .2s;
+}
+.cli:hover { color: var(--navy); }
+.cli-icon { width: 28px; height: 28px; border-radius: 6px; background: var(--navy-lt); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+.cli-icon svg { width: 12px; height: 12px; stroke: var(--navy); fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+
+/* ── SECTION WRAPPER ── */
+.sec { padding: 96px 48px; }
+.sec-inner { max-width: 1200px; margin: 0 auto; }
+.sec.alt { background: var(--bg-2); }
+
+.sec-label {
+  font-size: 10px; font-weight: 600; letter-spacing: .2em; text-transform: uppercase;
+  color: var(--navy); margin-bottom: 12px; display: flex; align-items: center; gap: 10px;
+}
+.sec-label::before { content: ''; width: 24px; height: 1px; background: var(--navy); display: block; }
+.sec-h2 {
+  font-family: 'Fraunces', serif; font-weight: 300; font-size: clamp(36px, 4vw, 54px);
+  color: var(--ink); line-height: 1.1; margin-bottom: 64px;
+}
+.sec-h2 em { font-style: italic; color: var(--ink-3); }
+
+/* ── EXPERIENCE TIMELINE ── */
+.exp-timeline { display: flex; flex-direction: column; gap: 0; }
+.exp-entry {
+  display: grid; grid-template-columns: 260px 1fr;
+  border-top: 1px solid var(--border);
+  padding: 52px 0; gap: 64px;
+  transition: background .2s;
+}
+.exp-entry:last-child { border-bottom: 1px solid var(--border); }
+.exp-meta {}
+.exp-period {
+  font-size: 11px; font-weight: 500; letter-spacing: .1em; text-transform: uppercase;
+  color: var(--gold); display: flex; align-items: center; gap: 8px; margin-bottom: 16px;
+}
+.exp-period::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: var(--gold); display: block; }
+.exp-co { font-family: 'Fraunces', serif; font-size: 24px; font-weight: 400; color: var(--ink); line-height: 1.2; margin-bottom: 4px; }
+.exp-place { font-size: 12px; color: var(--ink-4); letter-spacing: .04em; }
+.exp-content {}
+.exp-role {
+  display: inline-flex; align-items: center;
+  font-size: 11px; font-weight: 600; letter-spacing: .1em; text-transform: uppercase;
+  color: var(--navy-mid); background: var(--navy-lt); padding: 6px 14px;
+  border-radius: 3px; margin-bottom: 28px;
+}
+.exp-bullets { display: flex; flex-direction: column; gap: 14px; }
+.exp-bullet {
+  display: flex; gap: 14px; font-size: 15px; color: var(--ink-2); line-height: 1.72;
+}
+.exp-bullet::before { content: ''; width: 4px; height: 4px; border-radius: 50%; background: var(--gold); flex-shrink: 0; margin-top: 10px; }
+.exp-bullet strong { color: var(--ink); font-weight: 600; }
+
+/* ── PROJECTS BENTO ── */
+.bento { display: grid; grid-template-columns: repeat(12, 1fr); gap: 16px; }
+.b { background: var(--bg-card); border: 1px solid var(--border); border-radius: 6px; overflow: hidden; box-shadow: var(--shadow); transition: box-shadow .3s, transform .3s; }
+.b:hover { box-shadow: var(--shadow-lg); transform: translateY(-2px); }
+.b-1 { grid-column: span 8; }
+.b-2 { grid-column: span 4; }
+.b-3 { grid-column: span 4; }
+.b-4 { grid-column: span 8; }
+.b-5 { grid-column: span 12; }
+
+/* project image placeholder */
+.proj-img {
+  background: linear-gradient(135deg, var(--bg-2) 0%, var(--bg) 100%);
+  border-bottom: 1px solid var(--border); position: relative;
+  display: flex; align-items: center; justify-content: center;
+  overflow: hidden; cursor: pointer; width: 100%;
+}
+.proj-img.h-48 { height: 220px; }
+.proj-img.h-full { height: 100%; min-height: 320px; }
+.proj-img-content { text-align: center; z-index: 1; padding: 20px; }
+.proj-img-ico { width: 40px; height: 40px; margin: 0 auto 12px; opacity: .35; }
+.proj-img-ico svg { width: 40px; height: 40px; stroke: var(--ink); fill: none; stroke-width: 1.2; stroke-linecap: round; }
+.proj-img-lbl { font-size: 12px; font-weight: 600; color: var(--ink-3); letter-spacing: .1em; text-transform: uppercase; }
+.proj-img-hint { font-size: 11px; color: var(--ink-4); margin-top: 4px; font-family: 'JetBrains Mono', monospace; }
+.proj-img-bg {
+  position: absolute; inset: 0; font-family: 'Fraunces', serif;
+  font-size: 120px; font-weight: 700; color: var(--border);
+  display: flex; align-items: center; justify-content: center;
+  line-height: 1; pointer-events: none; user-select: none;
+  font-style: italic;
+}
+.proj-hover-overlay {
+  position: absolute; inset: 0; background: var(--navy);
+  display: flex; align-items: center; justify-content: center;
+  opacity: 0; transition: opacity .25s;
+}
+.proj-img:hover .proj-hover-overlay { opacity: .88; }
+.proj-hover-text { color: #fff; font-size: 13px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; }
+
+/* project body */
+.proj-body { padding: 28px 32px; }
+.proj-tags { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 16px; }
+.tag {
+  font-size: 10px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase;
+  padding: 4px 10px; border-radius: 3px;
+}
+.tag-blue { color: var(--navy-mid); background: var(--navy-lt); }
+.tag-gold { color: var(--gold); background: var(--gold-lt); }
+.tag-green { color: var(--green); background: var(--green-lt); }
+.tag-gray { color: var(--ink-3); background: var(--bg-2); border: 1px solid var(--border); }
+
+.proj-h3 {
+  font-family: 'Fraunces', serif; font-weight: 400; font-size: 20px;
+  color: var(--ink); line-height: 1.3; margin-bottom: 20px;
+}
+.proj-h3-lg { font-size: 26px; }
+
+.cs-blk { margin-bottom: 16px; }
+.cs-lbl {
+  font-size: 9px; font-weight: 700; letter-spacing: .18em; text-transform: uppercase;
+  color: var(--gold); margin-bottom: 6px; display: block;
+}
+.cs-txt { font-size: 14px; color: var(--ink-2); line-height: 1.75; }
+.cs-txt-s { font-size: 13px; }
+
+.proj-footer { display: flex; align-items: center; justify-content: space-between; margin-top: 20px; padding-top: 18px; border-top: 1px solid var(--border-2); flex-wrap: wrap; gap: 10px; }
+.proj-tools-row { display: flex; flex-wrap: wrap; gap: 6px; }
+.tool { font-family: 'JetBrains Mono', monospace; font-size: 10px; color: var(--ink-4); background: var(--bg-2); padding: 3px 9px; border-radius: 3px; letter-spacing: .03em; border: 1px solid var(--border-2); }
+
+/* big card horizontal split */
+.proj-split { display: grid; grid-template-columns: 42% 58%; min-height: 420px; }
+.proj-split .proj-img { aspect-ratio: unset; height: 100%; min-height: 340px; }
+.proj-split-body { padding: 36px 40px; display: flex; flex-direction: column; justify-content: center; }
+
+/* ── SKILLS ── */
+.skills-wrap { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+.skill-block { background: var(--bg-card); border: 1px solid var(--border); border-radius: 6px; padding: 36px; box-shadow: var(--shadow); }
+.sk-cat { font-size: 10px; font-weight: 700; letter-spacing: .2em; text-transform: uppercase; color: var(--navy); margin-bottom: 28px; padding-bottom: 16px; border-bottom: 1px solid var(--border); }
+.sk-list { display: flex; flex-direction: column; gap: 16px; }
+.sk-item {}
+.sk-name { font-size: 14px; font-weight: 600; color: var(--ink); margin-bottom: 3px; }
+.sk-sub { font-size: 12px; color: var(--ink-3); line-height: 1.5; }
+.sk-bar { height: 2px; background: var(--border); border-radius: 1px; margin-top: 8px; overflow: hidden; }
+.sk-bar-fill { height: 100%; border-radius: 1px; background: linear-gradient(90deg, var(--navy-mid), var(--gold)); transition: width 1.2s ease; }
+.sk-plain { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+.sk-plain li { font-size: 14px; color: var(--ink-2); display: flex; gap: 10px; align-items: baseline; }
+.sk-plain li::before { content: '—'; color: var(--gold); font-size: 12px; flex-shrink: 0; }
+
+/* ── EDUCATION ── */
+.edu-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 48px; }
+.edu-card {
+  background: var(--bg-card); border: 1px solid var(--border); border-radius: 6px;
+  padding: 32px; box-shadow: var(--shadow); position: relative; overflow: hidden;
+}
+.edu-card.featured { border-color: var(--navy-mid); }
+.edu-card.featured::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, var(--navy), var(--gold)); }
+.edu-year { font-size: 11px; color: var(--ink-4); letter-spacing: .08em; font-family: 'JetBrains Mono', monospace; margin-bottom: 12px; }
+.edu-deg { font-family: 'Fraunces', serif; font-size: 22px; font-weight: 400; color: var(--ink); line-height: 1.25; margin-bottom: 6px; }
+.edu-inst { font-size: 13px; color: var(--ink-3); margin-bottom: 20px; }
+.edu-score-row { display: flex; align-items: baseline; gap: 6px; }
+.edu-score-n { font-family: 'Fraunces', serif; font-size: 32px; font-weight: 300; color: var(--navy); }
+.edu-score-u { font-size: 12px; color: var(--ink-4); letter-spacing: .08em; }
+.edu-note { font-size: 13px; color: var(--ink-3); margin-top: 10px; line-height: 1.5; }
+
+/* courses & certs in 2-col */
+.sub-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.course-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: 6px; padding: 28px; box-shadow: var(--shadow); }
+.course-h { font-size: 10px; font-weight: 700; letter-spacing: .18em; text-transform: uppercase; color: var(--navy); margin-bottom: 20px; }
+.course-cols { display: grid; grid-template-columns: 1fr 1fr; gap: 0 24px; }
+.course-col-h { font-size: 9px; font-weight: 700; letter-spacing: .15em; text-transform: uppercase; color: var(--gold); margin-bottom: 10px; }
+.course-list-inner { list-style: none; display: flex; flex-direction: column; gap: 7px; }
+.course-list-inner li { font-size: 13px; color: var(--ink-2); padding-left: 12px; border-left: 2px solid var(--border); line-height: 1.5; }
+
+.certs-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: 6px; padding: 28px; box-shadow: var(--shadow); }
+.certs-h { font-size: 10px; font-weight: 700; letter-spacing: .18em; text-transform: uppercase; color: var(--navy); margin-bottom: 20px; }
+.cert-chips { display: flex; flex-wrap: wrap; gap: 8px; }
+.cert-chip {
+  background: var(--bg-2); border: 1px solid var(--border); border-radius: 4px;
+  padding: 10px 16px; display: flex; flex-direction: column; gap: 2px;
+}
+.cert-chip-n { font-size: 13px; font-weight: 600; color: var(--ink); }
+.cert-chip-s { font-size: 11px; color: var(--ink-4); }
+
+/* ── CONTACT ── */
+.contact-section {
+  background: var(--navy); padding: 96px 48px;
+}
+.contact-inner { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+.contact-h { font-family: 'Fraunces', serif; font-weight: 300; font-size: clamp(40px, 4.5vw, 64px); color: #fff; line-height: 1.1; margin-bottom: 20px; }
+.contact-h em { font-style: italic; color: rgba(255,255,255,.4); }
+.contact-sub { font-size: 16px; color: rgba(255,255,255,.55); line-height: 1.7; }
+.contact-items { display: flex; flex-direction: column; gap: 0; }
+.contact-item {
+  display: flex; align-items: center; gap: 20px;
+  padding: 22px 0; border-bottom: 1px solid rgba(255,255,255,.08);
+  transition: padding-left .2s;
+}
+.contact-item:hover { padding-left: 8px; }
+.contact-item:first-child { border-top: 1px solid rgba(255,255,255,.08); }
+.ci-icon { width: 40px; height: 40px; border-radius: 8px; background: rgba(255,255,255,.08); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+.ci-icon svg { width: 16px; height: 16px; stroke: rgba(255,255,255,.6); fill: none; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+.ci-lbl { font-size: 10px; color: rgba(255,255,255,.35); letter-spacing: .1em; text-transform: uppercase; margin-bottom: 3px; }
+.ci-val { font-size: 15px; color: #fff; }
+.ci-val a { color: rgba(255,255,255,.8); transition: color .2s; }
+.ci-val a:hover { color: #fff; }
+
+/* ── FOOTER ── */
+footer {
+  background: var(--bg-2); border-top: 1px solid var(--border);
+  padding: 28px 48px; display: flex; justify-content: space-between; align-items: center;
+}
+footer p { font-size: 12px; color: var(--ink-4); letter-spacing: .05em; }
+.f-logo { font-family: 'Fraunces', serif; font-size: 20px; font-weight: 300; font-style: italic; color: var(--ink-4); }
+
+/* ── PROGRESS INDICATOR ── */
+.scroll-progress { position: fixed; top: 60px; left: 0; right: 0; height: 2px; background: var(--border); z-index: 400; }
+.scroll-progress-fill { height: 100%; background: linear-gradient(90deg, var(--navy), var(--gold)); width: 0%; transition: width .1s; }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 1024px) {
+  .hero { grid-template-columns: 1fr; }
+  .hero-r { display: none; }
+  .bento { grid-template-columns: 1fr; }
+  .b-1,.b-2,.b-3,.b-4,.b-5 { grid-column: span 1; }
+  .proj-split { grid-template-columns: 1fr; }
+  .proj-split .proj-img { min-height: 220px; }
+  .skills-wrap { grid-template-columns: 1fr; }
+  .edu-grid { grid-template-columns: 1fr; }
+  .sub-grid { grid-template-columns: 1fr; }
+  .contact-inner { grid-template-columns: 1fr; gap: 48px; }
+}
+@media (max-width: 768px) {
+  .topbar { padding: 0 20px; }
+  .topbar-links { display: none; }
+  .sec { padding: 64px 20px; }
+  .hero-l { padding: 60px 24px; }
+  .hero-kpis { grid-template-columns: repeat(2,1fr); }
+  .exp-entry { grid-template-columns: 1fr; gap: 20px; }
+  footer { padding: 20px; flex-direction: column; gap: 8px; text-align: center; }
+  .contact-section { padding: 64px 20px; }
+  .course-cols { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<!-- SCROLL PROGRESS -->
+<div class="scroll-progress"><div class="scroll-progress-fill" id="spf"></div></div>
+
+<!-- TOPBAR -->
+<header class="topbar">
+  <div class="topbar-logo">Gangaraju <span>R.</span></div>
+  <nav class="topbar-links">
+    <a href="#experience">Experience</a>
+    <a href="#projects">Projects</a>
+    <a href="#skills">Skills</a>
+    <a href="#education">Education</a>
+    <a href="#contact">Contact</a>
+  </nav>
+  <div class="topbar-right">
+    <button class="theme-toggle" id="themeBtn" aria-label="Toggle theme">☽</button>
+    <a href="mailto:ae25m023@smail.iitm.ac.in" class="topbar-cta">Hire Me</a>
+  </div>
+</header>
+
+<!-- ═══════════════ HERO ═══════════════ -->
+<section class="hero">
+  <div class="hero-l">
+    <div class="hero-badge">
+      <span class="hero-badge-dot"></span>
+      <span>Open to Research Collaborations & Opportunities</span>
+    </div>
+
+    <h1 class="hero-h1">Ganga<br>raju <em>R.</em></h1>
+    <p class="hero-subtitle">M.Tech Aerospace Engineering · <span>IIT Madras</span> · CGPA 8.0</p>
+
+    <p class="hero-bio">
+      Precision-driven researcher specialising in high-fidelity CFD, fluid-structure interaction,
+      and autonomous UAV mission systems — committed to rigorous analysis over simplified aerodynamic assumptions.
+    </p>
+
+    <div class="hero-kpis">
+      <div class="hero-kpi">
+        <div class="hero-kpi-n">8.94</div>
+        <div class="hero-kpi-l">B.Tech GPA</div>
+      </div>
+      <div class="hero-kpi">
+        <div class="hero-kpi-n">2</div>
+        <div class="hero-kpi-l">Years Industry</div>
+      </div>
+      <div class="hero-kpi">
+        <div class="hero-kpi-n">5+</div>
+        <div class="hero-kpi-l">Core Projects</div>
+      </div>
+      <div class="hero-kpi">
+        <div class="hero-kpi-n">5</div>
+        <div class="hero-kpi-l">Certifications</div>
+      </div>
+    </div>
+
+    <div class="hero-actions">
+      <a href="#projects" class="btn-primary">View Projects →</a>
+      <a href="https://linkedin.com/in/gangaraju" target="_blank" class="btn-ghost">LinkedIn ↗</a>
+      <a href="mailto:ae25m023@smail.iitm.ac.in" class="btn-ghost">Email Me</a>
+    </div>
+  </div>
+
+  <div class="hero-r">
+    <span class="hero-r-label">Core Expertise</span>
+    <div class="expertise-cards">
+      <div class="exp-card-mini">
+        <div class="ecm-icon"><svg viewBox="0 0 24 24"><path d="M2 12s3-4 10-4 10 4 10 4-3 4-10 4-10-4-10-4z"/><circle cx="12" cy="12" r="2"/></svg></div>
+        <div>
+          <p class="ecm-title">Computational Fluid Dynamics</p>
+          <p class="ecm-body">Compressible, transonic & unsteady flow simulation via ANSYS Fluent / CFX with rigorous mesh refinement and convergence validation.</p>
+        </div>
+      </div>
+      <div class="exp-card-mini">
+        <div class="ecm-icon"><svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg></div>
+        <div>
+          <p class="ecm-title">Autonomous UAV Systems</p>
+          <p class="ecm-body">End-to-end mission design, telemetry analysis, multi-sensor navigation integration — with 2 years of field deployment experience.</p>
+        </div>
+      </div>
+      <div class="exp-card-mini">
+        <div class="ecm-icon"><svg viewBox="0 0 24 24"><path d="M4 2h16a2 2 0 0 1 2 2v4a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2zM4 14h16a2 2 0 0 1 2 2v4a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2v-4a2 2 0 0 1 2-2z"/></svg></div>
+        <div>
+          <p class="ecm-title">Structural Dynamics & Composites</p>
+          <p class="ecm-body">FSI modelling, composite laminate characterisation via experimental testing, and finite element analysis for aerospace structures.</p>
+        </div>
+      </div>
+      <div class="exp-card-mini">
+        <div class="ecm-icon"><svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="18" rx="2"/><path d="M8 21V3M16 21V3M2 12h20"/></svg></div>
+        <div>
+          <p class="ecm-title">CAD & Conceptual Design</p>
+          <p class="ecm-body">CATIA V5, SolidWorks, Fusion 360 — from parametric part modelling to full UAV and aircraft assembly with manufacturing-grade precision.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="contact-strip">
+      <p>Direct contact</p>
+      <div class="contact-links-mini">
+        <a class="cli" href="tel:+917702071303">
+          <div class="cli-icon"><svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.07 11.5a2 2 0 0 1 2-2.18h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L10.09 17a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg></div>
+          +91 770 207 1303
+        </a>
+        <a class="cli" href="mailto:ae25m023@smail.iitm.ac.in">
+          <div class="cli-icon"><svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div>
+          ae25m023@smail.iitm.ac.in
+        </a>
+        <a class="cli" href="https://linkedin.com/in/gangaraju" target="_blank">
+          <div class="cli-icon"><svg viewBox="0 0 24 24"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg></div>
+          linkedin.com/in/gangaraju
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ EXPERIENCE ═══════════════ -->
+<section class="sec" id="experience">
+  <div class="sec-inner">
+    <div class="reveal">
+      <p class="sec-label">Professional Experience</p>
+      <h2 class="sec-h2">Industry <em>Track Record</em></h2>
+    </div>
+
+    <div class="exp-timeline">
+      <div class="exp-entry reveal">
+        <div class="exp-meta">
+          <p class="exp-period">Jul 2024 – Sep 2024</p>
+          <p class="exp-co">YelloSkye</p>
+          <p class="exp-place">Bangalore, India</p>
+        </div>
+        <div class="exp-content">
+          <span class="exp-role">Analyst — Client Operations</span>
+          <div class="exp-bullets">
+            <div class="exp-bullet">Architected and optimised <strong>multi-sensor integrated drone flight control systems</strong>, developing real-time navigation algorithms that achieved measurable improvements in autonomous mission performance and sub-metre positional accuracy across all client deployments.</div>
+            <div class="exp-bullet">Enforced rigorous <strong>operational safety frameworks</strong> — pre-flight inspection protocols, regulatory compliance audits, and mission risk assessment — achieving a consistent, zero-incident operational record across all engagements.</div>
+            <div class="exp-bullet">Translated complex client briefs into <strong>structured, contingency-aware flight envelopes</strong>, coordinating end-to-end UAV operations from mission planning through post-flight data validation and delivery.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="exp-entry reveal">
+        <div class="exp-meta">
+          <p class="exp-period">Jan 2023 – Dec 2023</p>
+          <p class="exp-co">Aarav Unmanned Systems</p>
+          <p class="exp-place">Bangalore, India</p>
+        </div>
+        <div class="exp-content">
+          <span class="exp-role">Enterprise — Field Operations Engineer</span>
+          <div class="exp-bullets">
+            <div class="exp-bullet">Conducted systematic analysis of <strong>UAV flight telemetry and geospatial datasets</strong>, cross-referencing battery performance curves and atmospheric models to validate mission safety envelopes and optimise navigation routes prior to each deployment.</div>
+            <div class="exp-bullet">Executed high-resolution <strong>terrain mapping and multi-variable obstacle analysis</strong>, generating risk-averse flight paths that maintained reliable, high-quality data acquisition across complex survey environments.</div>
+            <div class="exp-bullet">Produced mission intelligence reports synthesising <strong>geospatial, topographic, and atmospheric data</strong>, directly informing field decision-making and improving survey coverage efficiency across diverse client programmes.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ PROJECTS ═══════════════ -->
+<section class="sec alt" id="projects">
+  <div class="sec-inner">
+    <div class="reveal">
+      <p class="sec-label">Project Case Studies</p>
+      <h2 class="sec-h2">Engineering <em>Work</em></h2>
+    </div>
+
+    <div class="bento">
+
+      <!-- P1 — TRANSONIC (wide) -->
+      <div class="b b-1 reveal">
+        <div class="proj-split">
+          <div class="proj-img proj-img h-full">
+            <div class="proj-img-bg">01</div>
+            <div class="proj-img-content">
+              <div class="proj-img-ico"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83"/></svg></div>
+              <p class="proj-img-lbl">CFD Simulation Image</p>
+              <p class="proj-img-hint">→ Replace with ANSYS contour render</p>
+            </div>
+            <div class="proj-hover-overlay"><span class="proj-hover-text">Replace with your image</span></div>
+          </div>
+          <div class="proj-split-body">
+            <div class="proj-tags"><span class="tag tag-blue">CFD</span><span class="tag tag-blue">Turbomachinery</span><span class="tag tag-gold">Compressible Flow</span></div>
+            <h3 class="proj-h3 proj-h3-lg">CFD Analysis of Swirl Recovery in a Transonic Propeller</h3>
+            <div class="cs-blk"><span class="cs-lbl">Problem Statement</span><p class="cs-txt">Swirl losses in transonic propeller wakes impose a measurable efficiency penalty. The objective was to quantify swirl recovery through vane integration without simplified axisymmetric assumptions — preserving true 3D flow physics at transonic Mach regimes.</p></div>
+            <div class="cs-blk"><span class="cs-lbl">Analytical Approach</span><p class="cs-txt cs-txt-s">Parameterised 3D propeller and swirl vane models in CATIA V5. Structured mesh refinement in ANSYS Design Modeller resolved boundary-layer gradients and shock zones. Iterative BC calibration in Fluent & CFX achieved stable residual convergence across operating points.</p></div>
+            <div class="cs-blk"><span class="cs-lbl">Outcome</span><p class="cs-txt cs-txt-s">Validated performance dataset quantifying swirl recovery efficiency vs. vane angle-of-attack — yielding actionable design guidelines for in-service propulsion improvement.</p></div>
+            <div class="proj-footer">
+              <div class="proj-tools-row"><span class="tool">CATIA V5</span><span class="tool">ANSYS Fluent</span><span class="tool">ANSYS CFX</span><span class="tool">Mesh Refinement</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- P2 — UAV DISASTER (narrow) -->
+      <div class="b b-2 reveal reveal-delay-1">
+        <div class="proj-img h-48">
+          <div class="proj-img-bg">02</div>
+          <div class="proj-img-content">
+            <div class="proj-img-ico"><svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg></div>
+            <p class="proj-img-lbl">UAV / CAD Image</p>
+            <p class="proj-img-hint">→ CAD render or field photo</p>
+          </div>
+          <div class="proj-hover-overlay"><span class="proj-hover-text">Replace with your image</span></div>
+        </div>
+        <div class="proj-body">
+          <div class="proj-tags"><span class="tag tag-blue">UAV Design</span><span class="tag tag-gold">Endurance Opt.</span></div>
+          <h3 class="proj-h3">Fixed-Wing UAV for Disaster Management & Surveillance</h3>
+          <div class="cs-blk"><span class="cs-lbl">Challenge</span><p class="cs-txt cs-txt-s">Post-disaster surveillance at 1.2 kg payload class — reconciling maximum loiter endurance with secure optical-fibre communications and structural integrity.</p></div>
+          <div class="cs-blk"><span class="cs-lbl">Outcome</span><p class="cs-txt cs-txt-s">Full conceptual design: constraint analysis, motor selection, control surface sizing, and validated endurance predictions with documented subsystem rationale.</p></div>
+          <div class="proj-footer"><div class="proj-tools-row"><span class="tool">CATIA V5</span><span class="tool">C++</span><span class="tool">Opt. Fibre</span></div></div>
+        </div>
+      </div>
+
+      <!-- P3 — COMPOSITE (narrow) -->
+      <div class="b b-3 reveal">
+        <div class="proj-img h-48">
+          <div class="proj-img-bg">03</div>
+          <div class="proj-img-content">
+            <div class="proj-img-ico"><svg viewBox="0 0 24 24"><rect x="2" y="7" width="20" height="3"/><rect x="2" y="12" width="20" height="3"/><rect x="2" y="17" width="20" height="3"/></svg></div>
+            <p class="proj-img-lbl">Specimen / Lab Photo</p>
+            <p class="proj-img-hint">→ Test specimen or stress-strain plot</p>
+          </div>
+          <div class="proj-hover-overlay"><span class="proj-hover-text">Replace with your image</span></div>
+        </div>
+        <div class="proj-body">
+          <div class="proj-tags"><span class="tag tag-green">Experimental</span><span class="tag tag-gold">Composites</span></div>
+          <h3 class="proj-h3">Hybrid Glass Fibre/Epoxy Composite Laminate Characterisation</h3>
+          <div class="cs-blk"><span class="cs-lbl">Approach</span><p class="cs-txt cs-txt-s">Hand lay-up fabrication → tensile & three-point flexural tests → benchmarked against classical laminate theory. Discrepancies attributed to manufacturing voids and resin-rich interlayers.</p></div>
+          <div class="cs-blk"><span class="cs-lbl">Outcome</span><p class="cs-txt cs-txt-s">Experimental dataset for tensile modulus, ultimate strength, and flexural rigidity as functions of stacking sequence with failure mode classification.</p></div>
+          <div class="proj-footer"><div class="proj-tools-row"><span class="tool">Hand Lay-Up</span><span class="tool">Tensile Test</span><span class="tool">CLT</span></div></div>
+        </div>
+      </div>
+
+      <!-- P4 — AIRCRAFT AERO (wide) -->
+      <div class="b b-4 reveal reveal-delay-1">
+        <div class="proj-img h-48">
+          <div class="proj-img-bg">04</div>
+          <div class="proj-img-content">
+            <div class="proj-img-ico"><svg viewBox="0 0 24 24"><path d="M22 16.5H2M12 3v9M5 8l7 5 7-5M3 16.5L12 21l9-4.5"/></svg></div>
+            <p class="proj-img-lbl">CFD / Aircraft Image</p>
+            <p class="proj-img-hint">→ Pressure contour, velocity field, or CAD render</p>
+          </div>
+          <div class="proj-hover-overlay"><span class="proj-hover-text">Replace with your image</span></div>
+        </div>
+        <div class="proj-body">
+          <div class="proj-tags"><span class="tag tag-blue">CFD</span><span class="tag tag-gray">Conceptual Design</span><span class="tag tag-gold">Parametric Study</span></div>
+          <h3 class="proj-h3">Aircraft Aerodynamic Modelling & Conceptual Design</h3>
+          <div class="cs-blk"><span class="cs-lbl">Approach</span><p class="cs-txt cs-txt-s">High-fidelity 3D CAD across successive design iterations. CFD campaigns captured configuration-dependent aerodynamic behaviour. Parametric trade studies evaluated payload-vs-range and speed-vs-efficiency frontiers, with structural weight fed back into the aerodynamic sizing loop to close the design spiral.</p></div>
+          <div class="proj-footer"><div class="proj-tools-row"><span class="tool">ANSYS Fluent</span><span class="tool">CATIA V5</span><span class="tool">XFLR5</span><span class="tool">Parametric Studies</span></div></div>
+        </div>
+      </div>
+
+      <!-- P5 — ROBOT (full) -->
+      <div class="b b-5 reveal">
+        <div class="proj-split" style="grid-template-columns:58% 42%;">
+          <div class="proj-split-body" style="padding:40px 48px;">
+            <div class="proj-tags"><span class="tag tag-gray">Robotics</span><span class="tag tag-blue">Embedded Systems</span><span class="tag tag-gold">Navigation</span></div>
+            <h3 class="proj-h3 proj-h3-lg">Autonomous Mobile Robot with Dynamic Obstacle Avoidance</h3>
+            <div class="cs-blk"><span class="cs-lbl">Problem Statement</span><p class="cs-txt">Reliable autonomous navigation in unstructured environments demands real-time sensor fusion and path-following robust to dynamic obstacles — exposing the limits of sequential sensing and reactive-only control architectures.</p></div>
+            <div class="cs-blk"><span class="cs-lbl">Technical Integration</span><p class="cs-txt cs-txt-s">Arduino platform with ultrasonic sensors (forward detection) + infrared sensors (edge/lateral boundaries). Python state machine: classifies proximity, triggers evasive manoeuvres, re-engages primary trajectory with minimal deviation. Motor timing calibrated to sensor update latency for consistent avoidance across surface types.</p></div>
+            <div class="cs-blk"><span class="cs-lbl">Outcome</span><p class="cs-txt cs-txt-s">Demonstrated reliable autonomous navigation through variable-complexity obstacle courses. Modular, extensible codebase validated for waypoint-following and multi-robot coordination.</p></div>
+            <div class="proj-footer"><div class="proj-tools-row"><span class="tool">Python</span><span class="tool">Arduino</span><span class="tool">Ultrasonic</span><span class="tool">Infrared</span><span class="tool">State Machine</span></div></div>
+          </div>
+          <div class="proj-img proj-img h-full" style="height:100%;min-height:300px;">
+            <div class="proj-img-bg">05</div>
+            <div class="proj-img-content">
+              <div class="proj-img-ico"><svg viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="10" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/><circle cx="12" cy="16" r="1"/></svg></div>
+              <p class="proj-img-lbl">Robot / Circuit Photo</p>
+              <p class="proj-img-hint">→ Built robot or obstacle course</p>
+            </div>
+            <div class="proj-hover-overlay"><span class="proj-hover-text">Replace with your image</span></div>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- /bento -->
+  </div>
+</section>
+
+<!-- ═══════════════ SKILLS ═══════════════ -->
+<section class="sec" id="skills">
+  <div class="sec-inner">
+    <div class="reveal">
+      <p class="sec-label">Technical Expertise</p>
+      <h2 class="sec-h2">Skills & <em>Toolchain</em></h2>
+    </div>
+
+    <div class="skills-wrap">
+      <div class="skill-block reveal">
+        <p class="sk-cat">CAD & Geometric Modelling</p>
+        <div class="sk-list">
+          <div class="sk-item">
+            <p class="sk-name">CATIA V5</p>
+            <p class="sk-sub">Part Design · Assembly · Sheet Metal · Wireframe & Surface · Kinematic Analysis</p>
+            <div class="sk-bar"><div class="sk-bar-fill" style="width:90%"></div></div>
+          </div>
+          <div class="sk-item">
+            <p class="sk-name">SolidWorks</p>
+            <p class="sk-sub">Part Design · Assembly · Technical Drafting</p>
+            <div class="sk-bar"><div class="sk-bar-fill" style="width:78%"></div></div>
+          </div>
+          <div class="sk-item">
+            <p class="sk-name">Fusion 360</p>
+            <p class="sk-sub">3D Modelling & Rendering</p>
+            <div class="sk-bar"><div class="sk-bar-fill" style="width:65%"></div></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="skill-block reveal reveal-delay-1">
+        <p class="sk-cat">Simulation & Analysis</p>
+        <div class="sk-list">
+          <div class="sk-item">
+            <p class="sk-name">ANSYS Fluent / CFX</p>
+            <p class="sk-sub">Compressible CFD · Turbulence Modelling · Mesh Refinement · Convergence Studies</p>
+            <div class="sk-bar"><div class="sk-bar-fill" style="width:85%"></div></div>
+          </div>
+          <div class="sk-item">
+            <p class="sk-name">ANSYS Static Structural</p>
+            <p class="sk-sub">FEA · Stress & Deformation Analysis</p>
+            <div class="sk-bar"><div class="sk-bar-fill" style="width:75%"></div></div>
+          </div>
+          <div class="sk-item">
+            <p class="sk-name">XFLR5 & MATLAB</p>
+            <p class="sk-sub">Low-speed aerodynamics · Numerical computation · Dynamics & signal processing</p>
+            <div class="sk-bar"><div class="sk-bar-fill" style="width:80%"></div></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="skill-block reveal reveal-delay-2">
+        <p class="sk-cat">Programming</p>
+        <div class="sk-list">
+          <div class="sk-item">
+            <p class="sk-name">Python</p>
+            <p class="sk-sub">Automation · Navigation algorithms · Data analysis & visualisation</p>
+            <div class="sk-bar"><div class="sk-bar-fill" style="width:82%"></div></div>
+          </div>
+          <div class="sk-item">
+            <p class="sk-name">C++</p>
+            <p class="sk-sub">Embedded systems · Real-time control · UAV onboard logic</p>
+            <div class="sk-bar"><div class="sk-bar-fill" style="width:72%"></div></div>
+          </div>
+          <div class="sk-item">
+            <p class="sk-name">LaTeX</p>
+            <p class="sk-sub">Complex technical reports · Beamer presentations · Mathematical typesetting</p>
+            <div class="sk-bar"><div class="sk-bar-fill" style="width:76%"></div></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="skill-block reveal">
+        <p class="sk-cat">UAV & Mission Systems</p>
+        <ul class="sk-plain">
+          <li>Multi-sensor integration & fusion</li>
+          <li>Real-time navigation algorithm development</li>
+          <li>UAV telemetry analysis & route optimisation</li>
+          <li>Terrain mapping & obstacle analysis</li>
+          <li>Operational safety & regulatory compliance</li>
+          <li>End-to-end mission planning & execution</li>
+        </ul>
+      </div>
+
+      <div class="skill-block reveal reveal-delay-1">
+        <p class="sk-cat">Aerospace Domain Expertise</p>
+        <ul class="sk-plain">
+          <li>Compressible & unsteady aerodynamics</li>
+          <li>Fluid-structure interaction (FSI)</li>
+          <li>Aeroelasticity & structural dynamics</li>
+          <li>Composite materials & experimental testing</li>
+          <li>Jet, rocket & space propulsion</li>
+          <li>Flight mechanics & control systems</li>
+        </ul>
+      </div>
+
+      <div class="skill-block reveal reveal-delay-2">
+        <p class="sk-cat">Documentation & Productivity</p>
+        <ul class="sk-plain">
+          <li>LaTeX — complex technical manuscripts</li>
+          <li>Beamer — academic presentations</li>
+          <li>Microsoft Office — client-facing reporting</li>
+          <li>Mission planning documentation</li>
+          <li>Regulatory compliance reporting</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ EDUCATION ═══════════════ -->
+<section class="sec alt" id="education">
+  <div class="sec-inner">
+    <div class="reveal">
+      <p class="sec-label">Academic Background</p>
+      <h2 class="sec-h2">Education & <em>Qualifications</em></h2>
+    </div>
+
+    <div class="edu-grid">
+      <div class="edu-card featured reveal">
+        <p class="edu-year">Currently Enrolled</p>
+        <p class="edu-deg">M.Tech, Aerospace Engineering</p>
+        <p class="edu-inst">Indian Institute of Technology Madras · Chennai, Tamil Nadu</p>
+        <div class="edu-score-row">
+          <span class="edu-score-n">8.0</span>
+          <span class="edu-score-u">/ 10 CGPA</span>
+        </div>
+        <p class="edu-note">Focused on aerodynamics, compressible flows, unsteady aerodynamics, and advanced computational methods. Coursework spans CFD, aeroelasticity, turbomachinery, and finite element analysis.</p>
+      </div>
+      <div class="edu-card reveal reveal-delay-1">
+        <p class="edu-year">2018 – 2022</p>
+        <p class="edu-deg">B.Tech, Aerospace Engineering</p>
+        <p class="edu-inst">Hindustan Institute of Technology and Science · Chennai</p>
+        <div class="edu-score-row">
+          <span class="edu-score-n">8.94</span>
+          <span class="edu-score-u">/ 10 GPA</span>
+        </div>
+      </div>
+      <div class="edu-card reveal">
+        <p class="edu-year">2015 – 2017</p>
+        <p class="edu-deg">Higher Secondary (12th Standard)</p>
+        <p class="edu-inst">Sri Chaithanya Junior College</p>
+        <div class="edu-score-row">
+          <span class="edu-score-n">94.1<span style="font-size:20px">%</span></span>
+        </div>
+      </div>
+      <div class="edu-card reveal reveal-delay-1">
+        <p class="edu-year">2014 – 2015</p>
+        <p class="edu-deg">Secondary School (10th Standard)</p>
+        <p class="edu-inst">ZPHS High School</p>
+        <div class="edu-score-row">
+          <span class="edu-score-n">8.3</span>
+          <span class="edu-score-u">/ 10 CGPA</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="sub-grid">
+      <div class="course-card reveal">
+        <p class="course-h">Relevant Coursework</p>
+        <div class="course-cols">
+          <div>
+            <p class="course-col-h">Propulsion & Fluids</p>
+            <ul class="course-list-inner">
+              <li>Turbomachinery</li>
+              <li>Jet & Rocket Propulsion</li>
+              <li>Space Propulsion</li>
+              <li>Unsteady Aerodynamics</li>
+              <li>Compressible Flow</li>
+              <li>Computational Fluid Dynamics</li>
+            </ul>
+          </div>
+          <div>
+            <p class="course-col-h">Structures & Control</p>
+            <ul class="course-list-inner">
+              <li>Dynamics & Aeroelasticity</li>
+              <li>Composite Materials</li>
+              <li>Finite Element Analysis</li>
+              <li>Aircraft Performance</li>
+              <li>Flight Mechanics</li>
+              <li>Dynamics & Control</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="certs-card reveal reveal-delay-1">
+        <p class="certs-h">Certifications</p>
+        <div class="cert-chips">
+          <div class="cert-chip"><span class="cert-chip-n">CATIA V5</span><span class="cert-chip-s">CAD School</span></div>
+          <div class="cert-chip"><span class="cert-chip-n">Everyday Excel</span><span class="cert-chip-s">Coursera</span></div>
+          <div class="cert-chip"><span class="cert-chip-n">Python Programming</span><span class="cert-chip-s">Coursera</span></div>
+          <div class="cert-chip"><span class="cert-chip-n">Exploring Time & Space</span><span class="cert-chip-s">Coursera</span></div>
+          <div class="cert-chip"><span class="cert-chip-n">Astronautics & HSF</span><span class="cert-chip-s">edX</span></div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ═══════════════ CONTACT ═══════════════ -->
+<section class="contact-section" id="contact">
+  <div class="contact-inner">
+    <div class="reveal">
+      <h2 class="contact-h">Let's work <em>together.</em></h2>
+      <p class="contact-sub">Open to research collaborations, industry opportunities, and conversations at the intersection of computational aerodynamics, UAV systems, and structural dynamics. Currently based at IIT Madras, Chennai.</p>
+    </div>
+    <div class="contact-items reveal reveal-delay-1">
+      <div class="contact-item">
+        <div class="ci-icon"><svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div>
+        <div><p class="ci-lbl">Email</p><p class="ci-val"><a href="mailto:ae25m023@smail.iitm.ac.in">ae25m023@smail.iitm.ac.in</a></p></div>
+      </div>
+      <div class="contact-item">
+        <div class="ci-icon"><svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.07 11.5a2 2 0 0 1 2-2.18h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L10.09 17a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg></div>
+        <div><p class="ci-lbl">Phone</p><p class="ci-val">+91 770 207 1303</p></div>
+      </div>
+      <div class="contact-item">
+        <div class="ci-icon"><svg viewBox="0 0 24 24"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg></div>
+        <div><p class="ci-lbl">LinkedIn</p><p class="ci-val"><a href="https://linkedin.com/in/gangaraju" target="_blank">linkedin.com/in/gangaraju ↗</a></p></div>
+      </div>
+      <div class="contact-item">
+        <div class="ci-icon"><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
+        <div><p class="ci-lbl">Location</p><p class="ci-val">IIT Madras, Chennai, Tamil Nadu</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>© 2025 Gangaraju R · Aerospace Engineering · IIT Madras</p>
+  <span class="f-logo">GR.</span>
+</footer>
+
+<script>
+// ── THEME TOGGLE ──
+const btn = document.getElementById('themeBtn');
+const html = document.documentElement;
+let dark = false;
+btn.addEventListener('click', () => {
+  dark = !dark;
+  html.setAttribute('data-theme', dark ? 'dark' : 'light');
+  btn.textContent = dark ? '○' : '☽';
+});
+
+// ── SCROLL PROGRESS ──
+window.addEventListener('scroll', () => {
+  const pct = window.scrollY / (document.documentElement.scrollHeight - window.innerHeight) * 100;
+  document.getElementById('spf').style.width = pct + '%';
+});
+
+// ── REVEAL ON SCROLL ──
+const obs = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if(e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); } });
+}, { threshold: 0.1 });
+document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+
+// ── ACTIVE NAV ──
+const sections = document.querySelectorAll('section[id], div[id]');
+const navLinks = document.querySelectorAll('.topbar-links a');
+const navObs = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if(e.isIntersecting) {
+      navLinks.forEach(l => l.classList.remove('active'));
+      const link = document.querySelector('.topbar-links a[href="#'+e.target.id+'"]');
+      if(link) link.classList.add('active');
+    }
+  });
+}, { threshold: 0.4 });
+sections.forEach(s => navObs.observe(s));
+
+// ── SKILL BAR ANIMATION ──
+const barObs = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if(e.isIntersecting) {
+      e.target.querySelectorAll('.sk-bar-fill').forEach(bar => {
+        const w = bar.style.width; bar.style.width = '0';
+        setTimeout(() => { bar.style.width = w; }, 100);
+      });
+      barObs.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.2 });
+document.querySelectorAll('.skill-block').forEach(b => barObs.observe(b));
+</script>
+</body>
+</html>
